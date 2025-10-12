@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk8lr507rk7yw"]
+
+[ext_resource type="Script" uid="uid://d3byhvy3liitc" path="res://beatsabergame.gd" id="1_iysjw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4u3w"]
+albedo_color = Color(0.321569, 1, 0, 1)
+
+[sub_resource type="Environment" id="Environment_fqf0d"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_iysjw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_h4u3w")
+size = Vector3(50, 1, 50)
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Left Hand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XROrigin3D/Left Hand"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XROrigin3D/Right Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fqf0d")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.0414745, 0.99914, 0, -0.99914, 0.0414745, 0, 4.78943, 0)
