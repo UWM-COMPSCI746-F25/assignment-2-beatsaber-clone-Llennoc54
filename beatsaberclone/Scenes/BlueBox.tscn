@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://2ju6fjjhg4un"]
+
+[ext_resource type="Script" uid="uid://c321xqo2uxhhd" path="res://Scripts/blueflyingbox.gd" id="1_0u8mf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgxc0"]
+albedo_color = Color(0.054902, 0.486275, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0u8mf"]
+
+[node name="BlueBox" type="Node3D"]
+
+[node name="blueflyingbox" type="CSGBox3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+layers = 4
+material_override = SubResource("StandardMaterial3D_hgxc0")
+script = ExtResource("1_0u8mf")
+
+[node name="BlueCollision" type="RigidBody3D" parent="blueflyingbox"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blueflyingbox/BlueCollision"]
+shape = SubResource("BoxShape3D_0u8mf")

@@ -15,6 +15,13 @@ run/main_scene="uid://bk8lr507rk7yw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[input]
+
+BlueBeam={
+"deadzone": 0.2,
+"events": []
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
