@@ -9,15 +9,16 @@ albedo_color = Color(0.054902, 0.486275, 1, 1)
 
 [node name="BlueBox" type="Node3D"]
 
-[node name="blueflyingbox" type="CSGBox3D" parent="."]
+[node name="BlueCollision" type="RigidBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_0u8mf")
+
+[node name="blueflyingbox" type="CSGBox3D" parent="BlueCollision"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 layers = 4
 material_override = SubResource("StandardMaterial3D_hgxc0")
-script = ExtResource("1_0u8mf")
 
-[node name="BlueCollision" type="RigidBody3D" parent="blueflyingbox"]
-collision_layer = 5
-collision_mask = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blueflyingbox/BlueCollision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueCollision"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_0u8mf")

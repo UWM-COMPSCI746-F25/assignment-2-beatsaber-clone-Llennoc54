@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk8lr507rk7yw"]
+[gd_scene load_steps=19 format=3 uid="uid://bk8lr507rk7yw"]
 
 [ext_resource type="Script" uid="uid://d3byhvy3liitc" path="res://beatsabergame.gd" id="1_iysjw"]
 [ext_resource type="Script" uid="uid://bb7dbw2p7e0at" path="res://bluebeam.gd" id="2_rad6e"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dfatpei6pfwx1" path="res://AssetStuff/LineRenderer (1).gd" id="7_yqjgr"]
 [ext_resource type="PackedScene" uid="uid://2ju6fjjhg4un" path="res://Scenes/BlueBox.tscn" id="8_g51o6"]
 [ext_resource type="PackedScene" uid="uid://di17lsutdc7g" path="res://Scenes/RedBox.tscn" id="9_2xkuc"]
+[ext_resource type="Script" uid="uid://i6qar6xc56f3" path="res://Scenes/blue_box.gd" id="9_crqbe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjgr"]
 albedo_color = Color(0, 0.619608, 1, 0.603922)
@@ -92,10 +93,11 @@ size = Vector3(50, 1, 50)
 shape = SubResource("BoxShape3D_yqjgr")
 
 [node name="BlueBox" parent="." instance=ExtResource("8_g51o6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11244, 1, -2.85717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, -12.4495)
+script = ExtResource("9_crqbe")
 
 [node name="RedBox" parent="." instance=ExtResource("9_2xkuc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.410812, 1.00998, -2.85868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.29276, -10.5588)
 
 [connection signal="button_pressed" from="XROrigin3D/Left Hand" to="XROrigin3D/Left Hand" method="_on_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/Right Hand" to="XROrigin3D/Right Hand" method="_on_button_pressed"]

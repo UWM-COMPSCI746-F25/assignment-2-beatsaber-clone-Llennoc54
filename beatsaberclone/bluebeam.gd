@@ -33,15 +33,13 @@ func _physics_process(delta):
 		var result = space_state.intersect_ray(query)
 		if result:
 			print("Left collision with ", result.collider.name)
-			if result.collider.is_in_group("blue_cube"):
+			var name = result.collider.name
+			if name == "BlueCollision":
 				result.collider.queue_free()
-		
 	$"BlueSaber".points[0] = origin
 	$"BlueSaber".points[1] = end
 
-func _on_area_3d_area_entered(area):
-	grabbed_object = area
-	grabbed_object.global_position = global_position
+
 func _on_area_3d_area_exited(area):
 	grabbed_object = null
 

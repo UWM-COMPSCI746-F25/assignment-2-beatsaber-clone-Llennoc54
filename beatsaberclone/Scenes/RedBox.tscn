@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://di17lsutdc7g"]
 
-[ext_resource type="Script" uid="uid://c321xqo2uxhhd" path="res://Scripts/blueflyingbox.gd" id="1_eryvs"]
+[ext_resource type="Script" uid="uid://cju864xiakj32" path="res://Scripts/redflyingbox.gd" id="1_eryvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eryvs"]
 albedo_color = Color(1, 0.137255, 0.184314, 1)
@@ -9,16 +9,16 @@ albedo_color = Color(1, 0.137255, 0.184314, 1)
 
 [node name="RedBox" type="Node3D"]
 
-[node name="redflyingbox" type="CSGBox3D" parent="."]
-layers = 2
-material_override = SubResource("StandardMaterial3D_eryvs")
-size = Vector3(0.5, 0.5, 0.5)
+[node name="RedCollision" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_eryvs")
 
-[node name="RedCollision" type="RigidBody3D" parent="redflyingbox"]
-collision_layer = 2
-collision_mask = 2
+[node name="redflyingbox" type="CSGBox3D" parent="RedCollision"]
+layers = 3
+material_override = SubResource("StandardMaterial3D_eryvs")
+size = Vector3(0.5, 0.5, 0.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="redflyingbox/RedCollision"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedCollision"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_eryvs")

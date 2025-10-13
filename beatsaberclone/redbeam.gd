@@ -27,21 +27,20 @@ func _physics_process(delta):
 	end = origin + (dir * RAY_LENGTH)
 	query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_areas = collision_enabled
-	query.collision_mask = 2 
 	
 	if collision_enabled:
 		var result = space_state.intersect_ray(query)
 		if result:
 			print("Right collision with ", result.collider.name)
-			if result.collider.is_in_group("red_cube"):
+			var name = result.collider.name
+			if name == "RedCollision":
 				result.collider.queue_free()
 
 	$"RedSaber".points[0] = origin
 	$"RedSaber".points[1] = end
-
+	
 func _on_area_3d_area_entered(area):
-	grabbed_object = area
-	grabbed_object.global_position = global_position
+	pass
 func _on_area_3d_area_exited(area):
 	grabbed_object = null
 
