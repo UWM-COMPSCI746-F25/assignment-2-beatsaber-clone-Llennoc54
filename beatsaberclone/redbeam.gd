@@ -34,6 +34,7 @@ func _physics_process(delta):
 			print("Right collision with ", result.collider.name)
 			var name = result.collider.name
 			if name == "RedCollision":
+				$AudioStreamPlayer3D.play()
 				result.collider.queue_free()
 
 	$"RedSaber".points[0] = origin

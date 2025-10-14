@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bk8lr507rk7yw"]
+[gd_scene load_steps=18 format=3 uid="uid://bk8lr507rk7yw"]
 
 [ext_resource type="Script" uid="uid://d3byhvy3liitc" path="res://beatsabergame.gd" id="1_iysjw"]
 [ext_resource type="Script" uid="uid://bb7dbw2p7e0at" path="res://bluebeam.gd" id="2_rad6e"]
@@ -7,9 +7,8 @@
 [ext_resource type="Script" uid="uid://bhysecu58aavw" path="res://Scripts/LineRenderer.gd" id="3_rad6e"]
 [ext_resource type="Script" uid="uid://djr8ss3h1rhuv" path="res://redbeam.gd" id="5_tq28y"]
 [ext_resource type="Script" uid="uid://dfatpei6pfwx1" path="res://AssetStuff/LineRenderer (1).gd" id="7_yqjgr"]
-[ext_resource type="PackedScene" uid="uid://2ju6fjjhg4un" path="res://Scenes/BlueBox.tscn" id="8_g51o6"]
+[ext_resource type="AudioStream" uid="uid://c2ashdm1p17s7" path="res://Sounds/swordslice.mp3" id="8_2xkuc"]
 [ext_resource type="PackedScene" uid="uid://di17lsutdc7g" path="res://Scenes/RedBox.tscn" id="9_2xkuc"]
-[ext_resource type="Script" uid="uid://i6qar6xc56f3" path="res://Scenes/blue_box.gd" id="9_crqbe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjgr"]
 albedo_color = Color(0, 0.619608, 1, 0.603922)
@@ -54,6 +53,10 @@ material_override = SubResource("StandardMaterial3D_yqjgr")
 mesh = SubResource("ImmediateMesh_co82r")
 script = ExtResource("3_rad6e")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="XROrigin3D/Left Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+stream = ExtResource("8_2xkuc")
+
 [node name="Right Hand" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
@@ -67,6 +70,9 @@ layers = 2
 material_override = SubResource("StandardMaterial3D_g51o6")
 mesh = SubResource("ImmediateMesh_yqjgr")
 script = ExtResource("7_yqjgr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="XROrigin3D/Right Hand"]
+stream = ExtResource("8_2xkuc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fqf0d")
@@ -91,10 +97,6 @@ size = Vector3(50, 1, 50)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
 shape = SubResource("BoxShape3D_yqjgr")
-
-[node name="BlueBox" parent="." instance=ExtResource("8_g51o6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00442, -12.4495)
-script = ExtResource("9_crqbe")
 
 [node name="RedBox" parent="." instance=ExtResource("9_2xkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.29276, -10.5588)
