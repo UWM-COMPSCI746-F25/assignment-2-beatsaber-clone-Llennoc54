@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbu2o4gbaw8bm"]
+
+[ext_resource type="Script" uid="uid://sqy81ho4m74j" path="res://Scenes/spawner.gd" id="1_ohbek"]
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_ohbek")
+
+[node name="bluetimer" type="Timer" parent="."]
+wait_time = 0.242
+one_shot = true
+
+[node name="redtimer" type="Timer" parent="."]
+wait_time = 0.155
+one_shot = true
+
+[connection signal="timeout" from="bluetimer" to="." method="_on_bluetimer_timeout"]
+[connection signal="timeout" from="redtimer" to="." method="_on_redtimer_timeout"]

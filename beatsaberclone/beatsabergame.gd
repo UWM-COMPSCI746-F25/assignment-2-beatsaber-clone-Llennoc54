@@ -1,7 +1,7 @@
 extends Node3D
 
 var xr_interface: XRInterface
-@onready var bluecube = load("res://Scenes/BlueBox.tscn")
+@onready var timer: Timer = $Timer
 
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -16,11 +16,3 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 		
-
-
-func _on_left_hand_button_pressed(name: String) -> void:
-	pass # Replace with function body.
-
-
-func _on_left_hand_button_released(name: String) -> void:
-	pass # Replace with function body.

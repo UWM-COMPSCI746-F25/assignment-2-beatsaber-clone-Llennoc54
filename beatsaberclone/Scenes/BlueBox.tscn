@@ -15,10 +15,16 @@ collision_mask = 5
 script = ExtResource("1_0u8mf")
 
 [node name="blueflyingbox" type="CSGBox3D" parent="BlueCollision"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 layers = 4
 material_override = SubResource("StandardMaterial3D_hgxc0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlueCollision"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_0u8mf")
+
+[node name="Timer" type="Timer" parent="BlueCollision"]
+wait_time = 20.0
+one_shot = true
+
+[connection signal="timeout" from="BlueCollision/Timer" to="BlueCollision" method="_on_timer_timeout"]

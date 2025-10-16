@@ -1,14 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://bk8lr507rk7yw"]
+[gd_scene load_steps=17 format=3 uid="uid://bk8lr507rk7yw"]
 
 [ext_resource type="Script" uid="uid://d3byhvy3liitc" path="res://beatsabergame.gd" id="1_iysjw"]
-[ext_resource type="Script" uid="uid://bb7dbw2p7e0at" path="res://bluebeam.gd" id="2_rad6e"]
+[ext_resource type="Script" uid="uid://bb7dbw2p7e0at" path="res://Scripts/bluebeam.gd" id="2_rad6e"]
 [ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://AssetStuff/OculusQuest2TouchController_Left.gltf" id="2_rtu1c"]
 [ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://AssetStuff/OculusQuest2TouchController_Right.gltf" id="3_co82r"]
 [ext_resource type="Script" uid="uid://bhysecu58aavw" path="res://Scripts/LineRenderer.gd" id="3_rad6e"]
-[ext_resource type="Script" uid="uid://djr8ss3h1rhuv" path="res://redbeam.gd" id="5_tq28y"]
+[ext_resource type="Script" uid="uid://djr8ss3h1rhuv" path="res://Scripts/redbeam.gd" id="5_tq28y"]
 [ext_resource type="Script" uid="uid://dfatpei6pfwx1" path="res://AssetStuff/LineRenderer (1).gd" id="7_yqjgr"]
 [ext_resource type="AudioStream" uid="uid://c2ashdm1p17s7" path="res://Sounds/swordslice.mp3" id="8_2xkuc"]
-[ext_resource type="PackedScene" uid="uid://di17lsutdc7g" path="res://Scenes/RedBox.tscn" id="9_2xkuc"]
+[ext_resource type="PackedScene" uid="uid://bbu2o4gbaw8bm" path="res://Scenes/Spawner.tscn" id="9_2xkuc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqjgr"]
 albedo_color = Color(0, 0.619608, 1, 0.603922)
@@ -22,10 +22,8 @@ albedo_color = Color(1, 0, 0.0117647, 0.607843)
 
 [sub_resource type="Environment" id="Environment_fqf0d"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rad6e"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4u3w"]
-albedo_color = Color(0.321569, 1, 0, 1)
+albedo_color = Color(0.0896613, 0.350285, 4.81308e-08, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yqjgr"]
 size = Vector3(50, 1, 50)
@@ -80,14 +78,6 @@ environment = SubResource("Environment_fqf0d")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.0414745, 0.99914, 0, -0.99914, 0.0414745, 0, 4.78943, 0)
 
-[node name="greybox" type="Area3D" parent="WorldEnvironment"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.61353, 1.28227, 0.125228)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="WorldEnvironment/greybox"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldEnvironment/greybox"]
-shape = SubResource("BoxShape3D_rad6e")
-
 [node name="ground" type="StaticBody3D" parent="."]
 
 [node name="ground" type="CSGBox3D" parent="ground"]
@@ -98,8 +88,8 @@ size = Vector3(50, 1, 50)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
 shape = SubResource("BoxShape3D_yqjgr")
 
-[node name="RedBox" parent="." instance=ExtResource("9_2xkuc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.29276, -10.5588)
+[node name="Spawner" parent="." instance=ExtResource("9_2xkuc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -15)
 
 [connection signal="button_pressed" from="XROrigin3D/Left Hand" to="XROrigin3D/Left Hand" method="_on_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/Right Hand" to="XROrigin3D/Right Hand" method="_on_button_pressed"]
