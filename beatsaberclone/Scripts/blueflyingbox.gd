@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var timer: Timer = $Timer
 @export var dir = Vector3(0, 0, 1)
-@export var speed = 2
+@export var speed = 4
 var location = -10
 
 func _ready():

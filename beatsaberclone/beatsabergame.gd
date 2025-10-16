@@ -13,6 +13,13 @@ func _ready():
 
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
+		
+		if xr_interface.has_signal("pose_recentered"):
+			xr_interface.connect("pose_recentered", _on_openxr_pose_recentered)
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 		
+func _on_openxr_pose_recentered() -> void:
+	XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)
+	print("Recentered!!!")
+	emit_signal("pose_recentered")

@@ -26,8 +26,6 @@ func _physics_process(delta):
 	end = origin + (dir * RAY_LENGTH)
 	query = PhysicsRayQueryParameters3D.create(origin, end)
 	query.collide_with_areas = collision_enabled
-	query.collision_mask = 3 
-
 	
 	if collision_enabled:
 		var result = space_state.intersect_ray(query)
