@@ -95,6 +95,12 @@ shape = SubResource("BoxShape3D_yqjgr")
 [node name="Spawner" parent="." instance=ExtResource("9_2xkuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -15)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17683, 0.202456, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27187, 0, 0)
+
 [connection signal="button_pressed" from="XROrigin3D/Left Hand" to="XROrigin3D/Left Hand" method="_on_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/Right Hand" to="XROrigin3D/Right Hand" method="_on_button_pressed"]
 [connection signal="timeout" from="XROrigin3D/Timer" to="XROrigin3D" method="_on_timer_timeout"]
